@@ -315,16 +315,39 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [
-        'copy:styles'
+        'copy:styles',
+        'webpack:dev'
       ],
       test: [
         'copy:styles'
       ],
       dist: [
         'copy:styles',
+        'webpack:dist',
         'imagemin',
         'svgmin'
       ]
+    },
+
+    webpack: {
+      options: {
+        entry: 'main',
+        output: {
+          path: __dirname + '/.tmp/scripts',
+          filename: 'app.bundle.js'
+        },
+        resolve: {
+          root: __dirname + '/app/scripts'
+        },
+        externals: {
+          'jquery': 'jQuery'
+        }
+      },
+      dev: {
+        debug: true,
+        devtool: 'source-map'
+      },
+      dist: {}
     }
   });
 
