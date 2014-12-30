@@ -34,6 +34,7 @@
   "dependencies": {
     "ampersand-router": "^1.0.6",
     "ampersand-view": "^7.2.0",
-    "ampersand-view-switcher": "^1.1.2"
+    "ampersand-view-switcher": "^1.1.2",
+    "html-loader": "^0.2.3"
   }
 }

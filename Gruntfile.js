@@ -41,6 +41,13 @@ module.exports = function (grunt) {
           livereload: true
         }
       },
+      templates: {
+        files: ['<%= config.app %>/templates/{,*/}*.html'],
+        tasks: ['webpack:dev'],
+        options: {
+          livereload: true
+        }
+      },
       jstest: {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['test:watch']
@@ -341,6 +348,11 @@ module.exports = function (grunt) {
         },
         externals: {
           'jquery': 'jQuery'
+        },
+        module: {
+          loaders: [
+            { test: /\.html$/, loader: 'html' }
+          ]
         }
       },
       dev: {
