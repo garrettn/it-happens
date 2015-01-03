@@ -8,6 +8,7 @@ var HeaderView = require('./views/header');
 var TabsView = require('./views/tabs');
 var RecordListView = require('./views/record-list');
 var ReportListView = require('./views/report-list');
+var events = require('./events');
 
 var app = {
   init: function (el) {
@@ -18,6 +19,11 @@ var app = {
     this.headerView = new HeaderView({el: el.querySelector('header'), model: this.state});
     this.contentPane = new ViewSwitcher(el.querySelector('main'));
     this.tabsView = new TabsView({el: el.querySelector('footer'), model: this.state});
+
+    this.modalContainer = el.querySelector('[data-hook~=modal]');
+    this.modalSwitcher = new ViewSwitcher(this.modalContainer);
+    events.on('modal:show', this.showModal, this);
+    events.on('modal:hide', this.hideModal, this);
 
     this.router = new Router();
 
@@ -35,6 +41,15 @@ var app = {
   showReportList: function () {
     this.state.activeTab = 'report';
     this.contentPane.set(new ReportListView({collection: this.things}));
+  },
+
+  showModal: function (view) {
+    this.modalSwitcher.set(view);
+    this.modalContainer.classList.add('active');
+  },
+
+  hideModal: function () {
+    this.modalContainer.classList.remove('active');
   }
 };
 
