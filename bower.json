@@ -2,6 +2,6 @@
   "name": "stuff-happens",
   "private": true,
   "dependencies": {
-    "ionic": "driftyco/ionic-bower#v1.0.0-beta.13"
+    "ratchet": "~2.0.2"
   }
 }
