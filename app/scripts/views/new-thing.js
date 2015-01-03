@@ -2,7 +2,7 @@
 
 var View = require('ampersand-view');
 var template = require('../../templates/new-thing.html');
-var events = require('../events');
+var router = require('../router');
 
 module.exports = View.extend({
   autoRender: true,
@@ -20,12 +20,7 @@ module.exports = View.extend({
   },
 
   events: {
-    'click [data-hook~=close]': 'close',
     'click [data-hook~=save]': 'saveNewThing'
-  },
-
-  close: function () {
-    events.trigger('modal:hide');
   },
 
   saveNewThing: function () {
@@ -33,7 +28,7 @@ module.exports = View.extend({
 
     if (name.length) {
       this.collection.add({name: name});
-      this.close();
+      router.navigate('things/all/record', {trigger: true});
     }
   }
 });

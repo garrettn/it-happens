@@ -1,13 +1,14 @@
 'use strict';
 
 var ViewSwitcher = require('ampersand-view-switcher');
-var Router = require('./router');
+var router = require('./router');
 var AppState = require('./models/app-state');
 var Things = require('./models/thing-collection');
 var HeaderView = require('./views/header');
 var TabsView = require('./views/tabs');
 var RecordListView = require('./views/record-list');
 var ReportListView = require('./views/report-list');
+var NewThingView = require('./views/new-thing');
 var events = require('./events');
 
 var app = {
@@ -25,12 +26,12 @@ var app = {
     events.on('modal:show', this.showModal, this);
     events.on('modal:hide', this.hideModal, this);
 
-    this.router = new Router();
+    router.on('route:recordList route:reportList', this.hideModal, this);
+    router.on('route:recordList', this.showRecordList, this);
+    router.on('route:reportList', this.showReportList, this);
+    router.on('route:newThing', this.showNewThingModal, this);
 
-    this.router.on('route:recordList', this.showRecordList, this);
-    this.router.on('route:reportList', this.showReportList, this);
-
-    this.router.history.start();
+    router.history.start();
   },
 
   showRecordList: function () {
@@ -50,6 +51,10 @@ var app = {
 
   hideModal: function () {
     this.modalContainer.classList.remove('active');
+  },
+
+  showNewThingModal: function () {
+    this.showModal(new NewThingView({collection: this.things}));
   }
 };
 

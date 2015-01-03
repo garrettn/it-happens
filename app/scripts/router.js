@@ -2,16 +2,17 @@
 
 var Router = require('ampersand-router');
 
-module.exports = Router.extend({
+module.exports = new (Router.extend({
 
   routes: {
     '': 'home',
-    'record': 'recordList',
-    'report': 'reportList'
+    'things/all/record': 'recordList',
+    'things/all/report': 'reportList',
+    'things/new': 'newThing'
   },
 
   home: function () {
-    this.redirectTo('record');
+    this.redirectTo('things/all/record');
   }
 
-});
+}))();
