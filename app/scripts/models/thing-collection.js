@@ -2,7 +2,6 @@
 
 var Collection = require('ampersand-collection');
 var Thing = require('./thing');
-var uuid = require('uuid');
 
 module.exports = Collection.extend({
   model: Thing,
@@ -12,8 +11,6 @@ module.exports = Collection.extend({
   },
 
   storeNewThing: function (thing) {
-    if (!thing.getId()) {
-      thing.id = uuid.v4();
-    }
+    console.log(thing);
   }
 });
