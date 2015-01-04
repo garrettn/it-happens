@@ -2,7 +2,6 @@
 
 var ViewSwitcher = require('ampersand-view-switcher');
 var router = require('./router');
-var AppState = require('./models/app-state');
 var Things = require('./models/thing-collection');
 var HeaderView = require('./views/header');
 var TabsView = require('./views/tabs');
@@ -15,12 +14,11 @@ var events = require('./events');
 var app = {
   init: function (el) {
 
-    this.state = new AppState();
     this.things = new Things();
 
-    this.headerView = new HeaderView({el: el.querySelector('header'), model: this.state});
+    this.headerView = new HeaderView({el: el.querySelector('header')});
     this.contentPane = new ViewSwitcher(el.querySelector('main'));
-    this.tabsView = new TabsView({el: el.querySelector('footer'), model: this.state});
+    this.tabsView = new TabsView({el: el.querySelector('footer')});
 
     this.modalContainer = el.querySelector('[data-hook~=modal]');
     this.modalSwitcher = new ViewSwitcher(this.modalContainer);
@@ -37,7 +35,6 @@ var app = {
   },
 
   showRecordList: function () {
-    this.state.activeTab = 'record';
     this.contentPane.set(new RecordListView({collection: this.things}));
   },
 
@@ -52,7 +49,6 @@ var app = {
   },
 
   showReportList: function () {
-    this.state.activeTab = 'report';
     this.contentPane.set(new ReportListView({collection: this.things}));
   },
 
