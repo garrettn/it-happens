@@ -12,8 +12,9 @@ module.exports = View.extend({
   props: {
     activeTitle: {
       type: 'string',
-      values: ['record', 'report']
-    }
+      values: ['record', 'report', 'thing']
+    },
+    thingName: 'string'
   },
 
   initialize: function () {
@@ -22,6 +23,17 @@ module.exports = View.extend({
         this.activeTitle = tabName;
       });
     }.bind(this));
+
+    this.listenTo(router, 'route:reportThing', this.setThingTitle);
+  },
+
+  setThingTitle: function (thingId) {
+    var thing = this.collection.get(thingId);
+
+    if (thing) {
+      this.thingName = thing.name;
+      this.activeTitle = 'thing';
+    }
   },
 
   bindings: {
@@ -29,8 +41,13 @@ module.exports = View.extend({
       type: 'switch',
       cases: {
         'record': '[data-hook~=title-record]',
-        'report': '[data-hook~=title-report]'
+        'report': '[data-hook~=title-report]',
+        'thing': '[data-hook~=title-thing]'
       }
+    },
+    'thingName': {
+      type: 'text',
+      hook: 'thing-name'
     }
   }
 });

@@ -9,6 +9,7 @@ module.exports = new (Router.extend({
     'things/all/record': 'recordList',
     'things/:id/record': 'recordThing',
     'things/all/report': 'reportList',
+    'things/:id/report': 'reportThing',
     'things/new': 'newThing'
   },
 

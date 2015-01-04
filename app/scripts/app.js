@@ -8,6 +8,7 @@ var TabsView = require('./views/tabs');
 var RecordListView = require('./views/record-list');
 var ThingRecordView = require('./views/thing-record');
 var ReportListView = require('./views/report-list');
+var ThingReportView = require('./views/thing-report');
 var NewThingView = require('./views/new-thing');
 var events = require('./events');
 
@@ -16,7 +17,7 @@ var app = {
 
     this.things = new Things();
 
-    this.headerView = new HeaderView({el: el.querySelector('header')});
+    this.headerView = new HeaderView({el: el.querySelector('header'), collection: this.things});
     this.contentPane = new ViewSwitcher(el.querySelector('main'));
     this.tabsView = new TabsView({el: el.querySelector('footer')});
 
@@ -29,6 +30,7 @@ var app = {
     router.on('route:recordList', this.showRecordList, this);
     router.on('route:recordThing', this.showRecordThing, this);
     router.on('route:reportList', this.showReportList, this);
+    router.on('route:reportThing', this.showReportThing, this);
     router.on('route:newThing', this.showNewThingModal, this);
 
     router.history.start();
@@ -45,6 +47,16 @@ var app = {
       this.showModal(new ThingRecordView({model: thing}));
     } else {
       router.redirectTo('things/all/record');
+    }
+  },
+
+  showReportThing: function (thingId) {
+    var thing = this.things.get(thingId);
+
+    if (thing) {
+      this.contentPane.set(new ThingReportView({model: thing}));
+    } else {
+      router.redirectTo('things/all/report');
     }
   },
 
