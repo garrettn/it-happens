@@ -7,6 +7,7 @@ module.exports = new (Router.extend({
   routes: {
     '': 'home',
     'things/all/record': 'recordList',
+    'things/:id/record': 'recordThing',
     'things/all/report': 'reportList',
     'things/new': 'newThing'
   },

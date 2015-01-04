@@ -7,6 +7,7 @@ var Things = require('./models/thing-collection');
 var HeaderView = require('./views/header');
 var TabsView = require('./views/tabs');
 var RecordListView = require('./views/record-list');
+var ThingRecordView = require('./views/thing-record');
 var ReportListView = require('./views/report-list');
 var NewThingView = require('./views/new-thing');
 var events = require('./events');
@@ -28,6 +29,7 @@ var app = {
 
     router.on('route:recordList route:reportList', this.hideModal, this);
     router.on('route:recordList', this.showRecordList, this);
+    router.on('route:recordThing', this.showRecordThing, this);
     router.on('route:reportList', this.showReportList, this);
     router.on('route:newThing', this.showNewThingModal, this);
 
@@ -37,6 +39,16 @@ var app = {
   showRecordList: function () {
     this.state.activeTab = 'record';
     this.contentPane.set(new RecordListView({collection: this.things}));
+  },
+
+  showRecordThing: function (thingId) {
+    var thing = this.things.get(thingId);
+
+    if (thing) {
+      this.showModal(new ThingRecordView({model: thing}));
+    } else {
+      router.redirectTo('things/all/record');
+    }
   },
 
   showReportList: function () {
