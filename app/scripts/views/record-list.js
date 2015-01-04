@@ -11,11 +11,6 @@ module.exports = View.extend({
     this.renderWithTemplate();
     this.renderCollection(this.collection, ItemView, this.queryByHook('record-things-list'));
     return this;
-  },
-
-
-  events: {
-    'click [data-hook~=new-thing]': 'showNewThingForm'
   }
 
 });
