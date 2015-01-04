@@ -13,7 +13,20 @@ module.exports = State.extend({
     name: 'string'
   },
 
+  session: {
+    timesHappened: {
+      type: 'number',
+      default: 0
+    }
+  },
+
   collections: {
     happenings: Happenings
+  },
+
+  initialize: function () {
+    this.listenTo(this.happenings, 'add remove', function () {
+      this.timesHappened = this.happenings.length;
+    });
   }
 });
