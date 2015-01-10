@@ -9,7 +9,9 @@ module.exports = View.extend({
 
   render: function () {
     this.renderWithTemplate();
-    this.renderCollection(this.model.happenings, ItemView, this.queryByHook('thing-happenings-list'));
+    this.renderCollection(this.model.happenings, ItemView, this.queryByHook('thing-happenings-list'), {
+      reverse: true
+    });
     return this;
   },
 
