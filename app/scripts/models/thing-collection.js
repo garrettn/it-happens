@@ -6,10 +6,11 @@ var Thing = require('./thing');
 module.exports = Collection.extend({
   model: Thing,
 
-  comparator: 'created',
+  comparator: 'mostRecentlyHappened',
 
   initialize: function () {
     this.listenTo(this, 'add', this.storeNewThing);
+    this.listenTo(this, 'change:mostRecentlyHappened', this.sort);
   },
 
   storeNewThing: function (thing) {
