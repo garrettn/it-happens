@@ -10,7 +10,13 @@ module.exports = State.extend({
       type: 'string',
       default: uuid.v4
     },
-    name: 'string'
+    name: 'string',
+    created: {
+      type: 'date',
+      default: function () {
+        return new Date();
+      }
+    }
   },
 
   session: {
