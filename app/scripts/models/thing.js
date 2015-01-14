@@ -38,6 +38,8 @@ module.exports = State.extend({
   },
 
   initialize: function () {
+    this.timesHappened = this.happenings.length;
+    
     if (this.happenings.length) {
       this.updateMostRecentlyHappened(last(this.happenings.models));
     }

@@ -16,6 +16,7 @@ var app = {
   init: function (el) {
 
     this.things = new Things();
+    this.things.fetch();
 
     this.headerView = new HeaderView({el: el.querySelector('header'), collection: this.things});
     this.contentPane = new ViewSwitcher(el.querySelector('main'));
