@@ -14,6 +14,7 @@ module.exports = Collection.extend({
 
   initialize: function () {
     this.listenTo(this, 'add change', this.storeThing);
+    this.listenTo(this, 'remove', this.deleteThing);
     this.listenTo(this, 'change:mostRecentlyHappened', this.sort);
     
     window.localforage.config({
@@ -34,5 +35,9 @@ module.exports = Collection.extend({
 
   storeThing: function (thing) {
     window.localforage.setItem(thing.getId(), thing.serialize());
+  },
+  
+  deleteThing: function (thing) {
+    window.localforage.removeItem(thing.getId());
   }
 });
