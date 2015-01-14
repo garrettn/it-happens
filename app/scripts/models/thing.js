@@ -42,6 +42,8 @@ module.exports = State.extend({
     
     if (this.happenings.length) {
       this.updateMostRecentlyHappened(last(this.happenings.models));
+    } else {
+      this.mostRecentlyHappened = new Date(this.created);
     }
 
     this.listenTo(this.happenings, 'add remove', function () {
