@@ -343,7 +343,7 @@ module.exports = function (grunt) {
           root: __dirname + '/app/scripts'
         },
         externals: {
-          'jquery': 'jQuery'
+          'localforage': 'localforage'
         },
         module: {
           loaders: [

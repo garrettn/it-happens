@@ -2,6 +2,7 @@
   "name": "stuff-happens",
   "private": true,
   "dependencies": {
-    "ratchet": "~2.0.2"
+    "ratchet": "~2.0.2",
+    "localforage": "~1.2.1"
   }
 }

@@ -40,8 +40,6 @@
     "ampersand-view-switcher": "^1.1.2",
     "backbone-events-standalone": "^0.2.4",
     "html-loader": "^0.2.3",
-    "localforage": "^1.2.1",
-    "script-loader": "^0.6.1",
     "uuid": "^2.0.1"
   }
 }
