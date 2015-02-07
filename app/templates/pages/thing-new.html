@@ -7,7 +7,10 @@
     <button class="btn btn-positive btn-block" data-hook="save">Save</button>
   </footer>
   <div class="content content-padded">
-    <p>Choose a name for the thing you want to keep track of.</p>
-    <input type="text" placeholder="Name of thing" data-hook="name">
+    <p>Create a new thing you want to keep track of.</p>
+    <label for="thing-name">Name</label>
+    <input id="thing-name" type="text" placeholder="Name of thing" data-hook="name">
+    <label for="thing-description">Description (optional)</label>
+    <textarea id="thing-description" rows="5" placeholder="Description of thing" data-hook="description"></textarea>
   </div>
 </div>

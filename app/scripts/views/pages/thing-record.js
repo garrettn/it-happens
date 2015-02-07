@@ -40,6 +40,16 @@ module.exports = View.extend({
       type: 'text',
       hook: 'name'
     },
+    'model.description': [
+      {
+        type: 'toggle',
+        hook: 'description'
+      },
+      {
+        type: 'text',
+        hook: 'description'
+      }
+    ],
     'formattedWhen': {
       type: 'text',
       hook: 'when'

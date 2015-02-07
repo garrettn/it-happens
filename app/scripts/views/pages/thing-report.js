@@ -26,7 +26,17 @@ module.exports = View.extend({
     'model.timesHappened': {
       type: 'text',
       hook: 'happenings'
-    }
+    },
+    'model.description': [
+      {
+        type: 'toggle',
+        hook: 'description'
+      },
+      {
+        type: 'text',
+        hook: 'description'
+      }
+    ]
   }
 
 });

@@ -12,6 +12,7 @@ module.exports = State.extend({
       default: uuid.v4
     },
     name: 'string',
+    description: 'string',
     created: {
       type: 'date',
       default: function () {
@@ -39,7 +40,7 @@ module.exports = State.extend({
 
   initialize: function () {
     this.timesHappened = this.happenings.length;
-    
+
     if (this.happenings.length) {
       this.updateMostRecentlyHappened(last(this.happenings.models));
     } else {

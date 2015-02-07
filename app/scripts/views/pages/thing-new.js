@@ -13,7 +13,8 @@ module.exports = View.extend({
     this.renderWithTemplate();
 
     this.cacheElements({
-      nameField: '[data-hook~=name]'
+      nameField: '[data-hook~=name]',
+      descriptionField: '[data-hook~=description]'
     });
 
     return this;
@@ -25,9 +26,10 @@ module.exports = View.extend({
 
   saveNewThing: function () {
     var name = this.nameField.value.trim();
-
+    var description = this.descriptionField.value.trim();
+    
     if (name.length) {
-      this.collection.add({name: name});
+      this.collection.add({name: name, description: description});
       router.navigate('things/all/record', {trigger: true});
     }
   }
