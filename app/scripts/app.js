@@ -1,15 +1,15 @@
 'use strict';
 
 var ViewSwitcher = require('ampersand-view-switcher');
-var router = require('./router');
+var router = require('router');
 var Things = require('./models/thing-collection');
 var HeaderView = require('./views/header');
 var TabsView = require('./views/tabs');
-var RecordListView = require('./views/record-list');
-var ThingRecordView = require('./views/thing-record');
-var ReportListView = require('./views/report-list');
-var ThingReportView = require('./views/thing-report');
-var NewThingView = require('./views/new-thing');
+var RecordListPage = require('./views/pages/record');
+var RecordThingPage = require('./views/pages/thing-record');
+var ReportListPage = require('./views/pages/report');
+var ReportThingPage = require('./views/pages/thing-report');
+var NewThingView = require('./views/pages/thing-new');
 var events = require('./events');
 
 var app = {
@@ -38,14 +38,14 @@ var app = {
   },
 
   showRecordList: function () {
-    this.contentPane.set(new RecordListView({collection: this.things}));
+    this.contentPane.set(new RecordListPage({collection: this.things}));
   },
 
   showRecordThing: function (thingId) {
     var thing = this.things.get(thingId);
 
     if (thing) {
-      this.showModal(new ThingRecordView({model: thing}));
+      this.showModal(new RecordThingPage({model: thing}));
     } else {
       router.redirectTo('things/all/record');
     }
@@ -55,14 +55,14 @@ var app = {
     var thing = this.things.get(thingId);
 
     if (thing) {
-      this.contentPane.set(new ThingReportView({model: thing}));
+      this.contentPane.set(new ReportThingPage({model: thing}));
     } else {
       router.redirectTo('things/all/report');
     }
   },
 
   showReportList: function () {
-    this.contentPane.set(new ReportListView({collection: this.things}));
+    this.contentPane.set(new ReportListPage({collection: this.things}));
   },
 
   showModal: function (view) {

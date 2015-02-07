@@ -1,16 +1,16 @@
 'use strict';
 
 var View = require('ampersand-view');
-var template = require('templates/record-list.html');
+var template = require('templates/pages/report.html');
 var CollectionView = require('ampersand-collection-view');
-var ItemView = require('./thing-record-list-item');
+var ItemView = require('../items/thing-report');
 
 module.exports = View.extend({
   template: template,
 
   subviews: {
     things: {
-      hook: 'record-things-list',
+      hook: 'report-things-list',
       prepareView: function (el) {
         return new CollectionView({
           el: el,

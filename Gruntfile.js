@@ -342,7 +342,8 @@ module.exports = function (grunt) {
         resolve: {
           root: __dirname + '/app/scripts',
           alias: {
-            templates: __dirname + '/app/templates'
+            templates: __dirname + '/app/templates',
+            router: __dirname + '/app/scripts/router'
           }
         },
         externals: {

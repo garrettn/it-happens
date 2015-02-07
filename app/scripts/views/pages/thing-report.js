@@ -1,9 +1,9 @@
 'use strict';
 
 var View = require('ampersand-view');
-var template = require('templates/thing-report.html');
+var template = require('templates/pages/thing-report.html');
 var CollectionView = require('ampersand-collection-view');
-var ItemView = require('./thing-happening-list-item');
+var ItemView = require('../items/happening');
 
 module.exports = View.extend({
   template: template,

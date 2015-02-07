@@ -1,9 +1,9 @@
 'use strict';
 
 var View = require('ampersand-view');
-var template = require('templates/thing-record.html');
-var Happening = require('../models/happening');
-var router = require('../router');
+var template = require('templates/pages/thing-record.html');
+var Happening = require('../../models/happening');
+var router = require('router');
 
 module.exports = View.extend({
   autoRender: true,
