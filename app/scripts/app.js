@@ -10,6 +10,7 @@ var RecordThingPage = require('./views/pages/thing-record');
 var ReportListPage = require('./views/pages/report');
 var ReportThingPage = require('./views/pages/thing-report');
 var NewThingView = require('./views/pages/thing-new');
+var EditThingView = require('./views/pages/thing-edit');
 var events = require('./events');
 
 var app = {
@@ -32,6 +33,7 @@ var app = {
     router.on('route:recordThing', this.showRecordThing, this);
     router.on('route:reportList', this.showReportList, this);
     router.on('route:reportThing', this.showReportThing, this);
+    router.on('route:editThing', this.showEditThingModal, this);
     router.on('route:newThing', this.showNewThingModal, this);
 
     router.history.start();
@@ -76,6 +78,16 @@ var app = {
 
   showNewThingModal: function () {
     this.showModal(new NewThingView({collection: this.things}));
+  },
+
+  showEditThingModal: function (thingId) {
+    var thing = this.things.get(thingId);
+
+    if (thing) {
+      this.showModal(new EditThingView({model: thing}));
+    } else {
+      router.redirectTo('things/all/record');
+    }
   }
 };
 

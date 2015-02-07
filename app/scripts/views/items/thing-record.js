@@ -2,15 +2,28 @@
 
 var View = require('ampersand-view');
 var template = require('templates/items/thing-record.html');
+var router = require('router');
 
 module.exports = View.extend({
   template: template,
 
   derived: {
-    url: {
+    baseUrl: {
       deps: ['model.id'],
       fn: function () {
-        return '#things/' + this.model.id + '/record';
+        return 'things/' + this.model.id + '/';
+      }
+    },
+    recordUrl: {
+      deps: ['baseUrl'],
+      fn: function () {
+        return '#' + this.baseUrl + 'record';
+      }
+    },
+    editUrl: {
+      deps: ['baseUrl'],
+      fn: function () {
+        return this.baseUrl + 'edit';
       }
     },
     menuId: {
@@ -26,7 +39,7 @@ module.exports = View.extend({
       type: 'text',
       hook: 'name'
     },
-    'url': {
+    'recordUrl': {
       type: 'attribute',
       hook: 'url',
       name: 'href'
@@ -46,7 +59,12 @@ module.exports = View.extend({
   },
 
   events: {
+      'click [data-hook~=edit]': 'editThing',
       'click [data-hook~=delete]': 'deleteThing'
+  },
+
+  editThing: function () {
+    router.navigate(this.editUrl, {trigger: true});
   },
 
   deleteThing: function () {
