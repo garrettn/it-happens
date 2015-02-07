@@ -1,7 +1,7 @@
 'use strict';
 
 var View = require('ampersand-view');
-var template = require('../../templates/thing-record.html');
+var template = require('templates/thing-record.html');
 var Happening = require('../models/happening');
 var router = require('../router');
 

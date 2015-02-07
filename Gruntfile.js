@@ -340,7 +340,10 @@ module.exports = function (grunt) {
           filename: 'app.bundle.js'
         },
         resolve: {
-          root: __dirname + '/app/scripts'
+          root: __dirname + '/app/scripts',
+          alias: {
+            templates: __dirname + '/app/templates'
+          }
         },
         externals: {
           'localforage': 'localforage'

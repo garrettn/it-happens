@@ -1,7 +1,7 @@
 'use strict';
 
 var View = require('ampersand-view');
-var template = require('../../templates/header.html');
+var template = require('templates/header.html');
 var router = require('../router');
 
 module.exports = View.extend({

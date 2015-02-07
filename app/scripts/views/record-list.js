@@ -1,7 +1,7 @@
 'use strict';
 
 var View = require('ampersand-view');
-var template = require('../../templates/record-list.html');
+var template = require('templates/record-list.html');
 var ItemView = require('./thing-record-list-item');
 
 module.exports = View.extend({
