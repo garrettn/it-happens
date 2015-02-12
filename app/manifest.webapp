@@ -1,0 +1,15 @@
+{
+  "name": "These Things Happen",
+  "description": "Easily track when things happen in your life.",
+  "launch_path": "/index.html",
+  "icons": {
+    "512": "/images/icon512.png",
+    "128": "/images/icon128.png"
+  },
+  "developer": {
+    "name": "Garrett Nay",
+    "url": "http://garrettn.github.io"
+  },
+  "default_locale": "en",
+  "type": "privileged"
+}

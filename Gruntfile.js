@@ -180,6 +180,7 @@ module.exports = function (grunt) {
             '<%= config.dist %>/scripts/**/*.js',
             '<%= config.dist %>/styles/{,*/}*.css',
             '<%= config.dist %>/images/{,*/}*.*',
+            '!<%= config.dist %>/images/icon*.png',
             '<%= config.dist %>/styles/fonts/{,*/}*.*',
             '<%= config.dist %>/*.{ico,png}'
           ]
@@ -293,7 +294,8 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'images/{,*/}*.webp',
             '{,*/}*.html',
-            'styles/fonts/{,*/}*.*'
+            'styles/fonts/{,*/}*.*',
+            'manifest.webapp'
           ]
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
@@ -301,7 +303,7 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           dot: true,
-          cwd: 'bower_components/bootstrap/dist',
+          cwd: 'bower_components/ratchet/dist',
           src: 'fonts/*',
           dest: '<%= config.dist %>'
         }]
@@ -403,7 +405,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'wiredep',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
