@@ -20,7 +20,7 @@ var app = {
     this.things.fetch();
 
     this.headerView = new HeaderView({el: el.querySelector('header'), collection: this.things});
-    this.contentPane = new ViewSwitcher(el.querySelector('main'));
+    this.contentPane = new ViewSwitcher(el.querySelector('[data-hook~=main]'));
     this.tabsView = new TabsView({el: el.querySelector('footer')});
 
     this.modalContainer = el.querySelector('[data-hook~=modal]');

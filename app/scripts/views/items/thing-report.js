@@ -12,6 +12,12 @@ module.exports = View.extend({
       fn: function () {
         return '#things/' + this.model.id + '/report';
       }
+    },
+    entriesInflection: {
+      deps: ['model.timesHappened'],
+      fn: function () {
+        return this.model.timesHappend == 1 ? 'entry' : 'entries';
+      }
     }
   },
 
@@ -28,6 +34,10 @@ module.exports = View.extend({
     'model.timesHappened': {
       type: 'text',
       hook: 'happenings'
+    },
+    'entriesInflection': {
+      type: 'text',
+      hook: 'entries-inflection'
     }
   }
 });

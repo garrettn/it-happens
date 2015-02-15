@@ -9,17 +9,26 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/ratchet/dist/css/ratchet.css" />
+    <!-- <link rel="stylesheet" href="bower_components/ratchet/dist/css/ratchet.css" /> -->
+    <link rel="stylesheet" href="bower_components/building-blocks/fonts.css">
+    <link rel="stylesheet" href="bower_components/building-blocks/util.css">
+    <link rel="stylesheet" href="bower_components/building-blocks/style/icons.css">
+    <link rel="stylesheet" href="bower_components/building-blocks/style/layout.css">
+    <link rel="stylesheet" href="bower_components/building-blocks/style/headers.css">
+    <link rel="stylesheet" href="bower_components/building-blocks/style/tabs.css">
+    <link rel="stylesheet" href="bower_components/building-blocks/style/lists.css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body>
-    <header></header>
-    <footer></footer>
-    <main class="content"></main>
+  <body class="skin-comms">
+    <section role="region" class="vbox fit">
+      <header></header>
+      <section data-hook="main"></section>
+      <footer></footer>
+    </section>
     <div class="modal" data-hook="modal"></div>
 
 

@@ -10,28 +10,29 @@ module.exports = View.extend({
   template: template,
 
   props: {
-    activeTab: {
-      type: 'string',
-      values: ['record', 'report']
-    }
+    isRecordActive: 'boolean',
+    isReportActive: 'boolean'
   },
 
   initialize: function () {
     ['record', 'report'].forEach(function (tabName) {
       this.listenTo(router, 'route:' + tabName + 'List', function () {
-        this.activeTab = tabName;
+        this.isRecordActive = tabName === 'record';
+        this.isReportActive = tabName === 'report';
       });
     }.bind(this));
   },
 
   bindings: {
-    'activeTab': {
-      type: 'switchClass',
-      name: 'active',
-      cases: {
-        'record': '[data-hook~=tab-record]',
-        'report': '[data-hook~=tab-report]'
-      }
+    'isRecordActive': {
+      type: 'attribute',
+      name: 'aria-selected',
+      hook: 'tab-record'
+    },
+    'isReportActive': {
+      type: 'attribute',
+      name: 'aria-selected',
+      hook: 'tab-report'
     }
   }
 });
