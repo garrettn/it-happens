@@ -16,7 +16,7 @@ module.exports = View.extend({
     entriesInflection: {
       deps: ['model.timesHappened'],
       fn: function () {
-        return this.model.timesHappend == 1 ? 'entry' : 'entries';
+        return this.model.timesHappened === 1 ? 'entry' : 'entries';
       }
     }
   },
@@ -33,7 +33,7 @@ module.exports = View.extend({
     },
     'model.timesHappened': {
       type: 'text',
-      hook: 'happenings'
+      hook: 'entries'
     },
     'entriesInflection': {
       type: 'text',

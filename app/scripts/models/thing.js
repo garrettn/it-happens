@@ -2,7 +2,7 @@
 
 var State = require('ampersand-state');
 var uuid = require('uuid');
-var Happenings = require('./happening-collection');
+var Entries = require('./entry-collection');
 var last = require('amp-last');
 
 module.exports = State.extend({
@@ -35,26 +35,26 @@ module.exports = State.extend({
   },
 
   collections: {
-    happenings: Happenings
+    entries: Entries
   },
 
   initialize: function () {
-    this.timesHappened = this.happenings.length;
+    this.timesHappened = this.entries.length;
 
-    if (this.happenings.length) {
-      this.updateMostRecentlyHappened(last(this.happenings.models));
+    if (this.entries.length) {
+      this.updateMostRecentlyHappened(last(this.entries.models));
     } else {
       this.mostRecentlyHappened = new Date(this.created);
     }
 
-    this.listenTo(this.happenings, 'add remove', function () {
-      this.timesHappened = this.happenings.length;
+    this.listenTo(this.entries, 'add remove', function () {
+      this.timesHappened = this.entries.length;
     });
 
-    this.listenTo(this.happenings, 'add', this.updateMostRecentlyHappened);
+    this.listenTo(this.entries, 'add', this.updateMostRecentlyHappened);
   },
 
-  updateMostRecentlyHappened: function (happening) {
-    this.mostRecentlyHappened = new Date(happening.when);
+  updateMostRecentlyHappened: function (entry) {
+    this.mostRecentlyHappened = new Date(entry.when);
   }
 });

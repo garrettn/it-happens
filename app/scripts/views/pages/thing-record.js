@@ -2,7 +2,7 @@
 
 var View = require('ampersand-view');
 var template = require('templates/pages/thing-record.html');
-var Happening = require('../../models/happening');
+var Entry = require('../../models/entry');
 var router = require('router');
 
 module.exports = View.extend({
@@ -11,20 +11,20 @@ module.exports = View.extend({
   template: template,
 
   props: {
-    happening: 'state'
+    entry: 'state'
   },
 
   derived: {
     formattedWhen: {
-      deps: ['happening.when'],
+      deps: ['entry.when'],
       fn: function () {
-        return this.happening.when.toLocaleString();
+        return this.entry.when.toLocaleString();
       }
     }
   },
 
   initialize: function () {
-    this.happening = new Happening();
+    this.entry = new Entry();
   },
 
   render: function () {
@@ -57,17 +57,17 @@ module.exports = View.extend({
   },
 
   events: {
-    'click [data-hook~=save]': 'saveHappening'
+    'click [data-hook~=save]': 'saveEntry'
   },
 
-  saveHappening: function () {
+  saveEntry: function () {
     var notes = this.notesField.value.trim();
 
     if (notes) {
-      this.happening.notes = notes;
+      this.entry.notes = notes;
     }
 
-    this.model.happenings.add(this.happening);
+    this.model.entry.add(this.entry);
 
     router.navigate('things/all/record', {trigger: true});
   }

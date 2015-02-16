@@ -3,18 +3,18 @@
 var View = require('ampersand-view');
 var template = require('templates/pages/thing-report.html');
 var CollectionView = require('ampersand-collection-view');
-var ItemView = require('../items/happening');
+var ItemView = require('../items/entry');
 
 module.exports = View.extend({
   template: template,
 
   subviews: {
-    happenings: {
-      hook: 'thing-happenings-list',
+    entries: {
+      hook: 'thing-entries-list',
       prepareView: function (el) {
         return new CollectionView({
           el: el,
-          collection: this.model.happenings,
+          collection: this.model.entries,
           view: ItemView,
           reverse: true
         });
@@ -25,7 +25,7 @@ module.exports = View.extend({
   bindings: {
     'model.timesHappened': {
       type: 'text',
-      hook: 'happenings'
+      hook: 'entries'
     },
     'model.description': [
       {

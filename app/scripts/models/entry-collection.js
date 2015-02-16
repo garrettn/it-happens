@@ -1,10 +1,10 @@
 'use strict';
 
 var Collection = require('ampersand-collection');
-var Happening = require('./happening');
+var Entry = require('./entry');
 
 module.exports = Collection.extend({
-  model: Happening,
+  model: Entry,
 
   comparator: 'when'
 });
