@@ -9,7 +9,6 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <!-- <link rel="stylesheet" href="bower_components/ratchet/dist/css/ratchet.css" /> -->
     <link rel="stylesheet" href="bower_components/building-blocks/fonts.css">
     <link rel="stylesheet" href="bower_components/building-blocks/util.css">
     <link rel="stylesheet" href="bower_components/building-blocks/style/icons.css">
@@ -24,18 +23,21 @@
     <!-- endbuild -->
   </head>
   <body class="skin-comms">
-    <section role="region" class="vbox fit">
-      <header></header>
-      <section data-hook="main"></section>
-      <footer></footer>
-    </section>
-    <div class="modal" data-hook="modal"></div>
+    <div class="screen" data-hook="view-things"></div>
+
+    <div class="screen right" data-hook="container-detail">
+      <section role="region">
+        <header>
+          <a href="#things" class="icon icon-close">close</a>
+          <h1>New thing</h1>
+        </header>
+      </section>
+    </div>
 
 
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/ratchet/dist/js/ratchet.js"></script>
     <script src="bower_components/localforage/dist/localforage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->

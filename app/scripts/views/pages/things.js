@@ -1,21 +1,20 @@
 'use strict';
 
 var View = require('ampersand-view');
-var template = require('templates/pages/record.html');
+var template = require('templates/pages/things.html');
 var CollectionView = require('ampersand-collection-view');
-var ItemView = require('../items/thing-record');
+var ThingView = require('../items/thing.js');
 
 module.exports = View.extend({
   template: template,
-
   subviews: {
     things: {
-      hook: 'record-things-list',
+      hook: 'things',
       prepareView: function (el) {
         return new CollectionView({
           el: el,
           collection: this.collection,
-          view: ItemView,
+          view: ThingView,
           reverse: true
         });
       }

@@ -1,0 +1,33 @@
+html,
+body {
+  height: 100%;
+}
+
+.gaia-icon {
+  font-size: 0;
+  color: #000;
+  text-decoration: none;
+}
+
+.gaia-icon:before {
+  width: 4rem;
+  height: 4em;
+  font-size: 4rem;
+}
+
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.screen.right {
+  transform: translateX(100%);
+}
+
+.screen.left {
+  transform: translateX(-100%);
+}
