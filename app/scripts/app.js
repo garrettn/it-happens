@@ -4,6 +4,7 @@ var router = require('router');
 var Things = require('./models/thing-collection');
 var ThingsView = require('./views/pages/things');
 var ViewSwitcher = require('ampersand-view-switcher');
+var NewThingView = require('./views/pages/thing-new');
 
 var app = {
   init: function () {
@@ -23,12 +24,13 @@ var app = {
     this.detailSwitcher = new ViewSwitcher(this.detailContainer);
 
     router.on('route:showThings', this.showThings, this);
-    router.on('route:newThing', this.showDetail, this);
+    router.on('route:newThing', this.showNewThing, this);
 
     router.history.start();
   },
 
-  showDetail: function () {
+  showDetail: function (view) {
+    this.detailSwitcher.set(view);
     this.thingsContainer.classList.add('left');
     this.detailContainer.classList.remove('right');
   },
@@ -36,6 +38,10 @@ var app = {
   showThings: function () {
     this.detailContainer.classList.add('right');
     this.thingsContainer.classList.remove('left');
+  },
+
+  showNewThing: function () {
+    this.showDetail(new NewThingView({collection: this.things}));
   }
 
 };

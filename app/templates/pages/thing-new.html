@@ -1,16 +1,20 @@
-<div>
-  <header class="bar bar-nav">
-    <a class="icon icon-close pull-right" href="#things/all/record"></a>
-    <h1 class="title">Add a new thing</h1>
+<section role="region">
+  <header>
+    <a href="#things" class="icon icon-close">close</a>
+    <menu type="toolbar">
+      <button data-hook="save">save</button>
+    </menu>
+    <h1>New thing</h1>
   </header>
-  <footer class="bar bar-standard bar-footer">
-    <button class="btn btn-positive btn-block" data-hook="save">Save</button>
-  </footer>
-  <div class="content content-padded">
-    <p>Create a new thing you want to keep track of.</p>
-    <label for="thing-name">Name</label>
-    <input id="thing-name" type="text" placeholder="Name of thing" data-hook="name">
-    <label for="thing-description">Description (optional)</label>
-    <textarea id="thing-description" rows="5" placeholder="Description of thing" data-hook="description"></textarea>
-  </div>
-</div>
+  <form>
+    <p>
+      Create a new thing you want to keep track of.
+    </p>
+    <p>
+      <input type="text" data-hook="name" placeholder="Name of thing">
+    </p>
+    <p>
+      <textarea data-hook="description" placeholder="Description (optional)"></textarea>
+    </p>
+  </form>
+</section>

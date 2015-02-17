@@ -31,3 +31,11 @@ body {
 .screen.left {
   transform: translateX(-100%);
 }
+
+form {
+  margin: 1rem 1.5rem;
+}
+
+form p:first-child {
+  margin-bottom: 1rem;
+}

@@ -25,12 +25,13 @@ module.exports = View.extend({
   },
 
   saveNewThing: function () {
+    console.log('hello!');
     var name = this.nameField.value.trim();
     var description = this.descriptionField.value.trim();
-    
+
     if (name.length) {
       this.collection.add({name: name, description: description});
-      router.navigate('things/all/record', {trigger: true});
+      router.navigate('things', {trigger: true});
     }
   }
 });

@@ -39,9 +39,8 @@ module.exports = State.extend({
   },
 
   initialize: function () {
-    this.timesHappened = this.entries.length;
-
     if (this.entries.length) {
+      this.timesHappened = this.entries.length;
       this.updateMostRecentlyHappened(last(this.entries.models));
     } else {
       this.mostRecentlyHappened = new Date(this.created);
