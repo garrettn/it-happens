@@ -2,6 +2,8 @@
 
 var View = require('ampersand-view');
 var template = require('templates/items/thing.html');
+var router = require('../../router');
+var matches = require('matches-selector');
 
 module.exports = View.extend({
   template: template,
@@ -19,10 +21,16 @@ module.exports = View.extend({
         return this.model.mostRecentlyHappened.toLocaleString();
       }
     },
-    entryUrl: {
+    baseUrl: {
       deps: ['model.id'],
       fn: function () {
-        return '#things/' + this.model.getId() + '/entry';
+        return '#things/' + this.model.getId();
+      }
+    },
+    entryUrl: {
+      deps: ['baseUrl'],
+      fn: function () {
+        return this.baseUrl + '/entry';
       }
     }
   },
@@ -54,6 +62,17 @@ module.exports = View.extend({
       type: 'attribute',
       name: 'href',
       hook: 'new-entry'
+    }
+  },
+
+  events: {
+    'click': 'showEntries'
+  },
+
+  showEntries: function (e) {
+    // Make sure the user didn't tap on the new entry button
+    if (!matches(e.target, '[data-hook~=new-entry]')) {
+      router.navigate(this.baseUrl, {trigger: true});
     }
   }
 });

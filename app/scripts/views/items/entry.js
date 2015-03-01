@@ -20,9 +20,15 @@ module.exports = View.extend({
       type: 'text',
       hook: 'when'
     },
-    'model.notes': {
-      type: 'text',
-      hook: 'notes'
-    }
+    'model.notes': [
+      {
+        type: 'toggle',
+        hook: 'notes'
+      },
+      {
+        type: 'text',
+        hook: 'notes'
+      }
+    ]
   }
 });

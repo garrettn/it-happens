@@ -41,6 +41,7 @@
     "ampersand-view-switcher": "^1.1.2",
     "backbone-events-standalone": "^0.2.4",
     "html-loader": "^0.2.3",
+    "matches-selector": "^1.0.0",
     "uuid": "^2.0.1"
   }
 }

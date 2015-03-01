@@ -1,16 +1,25 @@
 'use strict';
 
 var View = require('ampersand-view');
-var template = require('templates/pages/thing-report.html');
+var template = require('templates/pages/entries.html');
 var CollectionView = require('ampersand-collection-view');
 var ItemView = require('../items/entry');
 
 module.exports = View.extend({
   template: template,
 
+  derived: {
+    entriesInflection: {
+      deps: ['model.timesHappened'],
+      fn: function () {
+        return this.model.timesHappened === 1 ? 'time' : 'times';
+      }
+    }
+  },
+
   subviews: {
     entries: {
-      hook: 'thing-entries-list',
+      hook: 'entries',
       prepareView: function (el) {
         return new CollectionView({
           el: el,
@@ -23,9 +32,17 @@ module.exports = View.extend({
   },
 
   bindings: {
+    'model.name': {
+      type: 'text',
+      hook: 'name'
+    },
     'model.timesHappened': {
       type: 'text',
-      hook: 'entries'
+      hook: 'entries-number'
+    },
+    'entriesInflection': {
+      type: 'text',
+      hook: 'entries-inflection'
     },
     'model.description': [
       {
