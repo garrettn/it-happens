@@ -18,6 +18,12 @@ module.exports = View.extend({
       fn: function () {
         return this.model.mostRecentlyHappened.toLocaleString();
       }
+    },
+    entryUrl: {
+      deps: ['model.id'],
+      fn: function () {
+        return '#things/' + this.model.getId() + '/entry';
+      }
     }
   },
 
@@ -43,6 +49,11 @@ module.exports = View.extend({
     'latestFormatted': {
       type: 'text',
       hook: 'latest-when'
+    },
+    'entryUrl': {
+      type: 'attribute',
+      name: 'href',
+      hook: 'new-entry'
     }
   }
 });

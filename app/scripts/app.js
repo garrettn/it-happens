@@ -5,6 +5,7 @@ var Things = require('./models/thing-collection');
 var ThingsView = require('./views/pages/things');
 var ViewSwitcher = require('ampersand-view-switcher');
 var NewThingView = require('./views/pages/thing-new');
+var NewEntryView = require('./views/pages/entry-new');
 
 var app = {
   init: function () {
@@ -25,6 +26,7 @@ var app = {
 
     router.on('route:showThings', this.showThings, this);
     router.on('route:newThing', this.showNewThing, this);
+    router.on('route:newEntry', this.showNewEntry, this);
 
     router.history.start();
   },
@@ -42,6 +44,16 @@ var app = {
 
   showNewThing: function () {
     this.showDetail(new NewThingView({collection: this.things}));
+  },
+
+  showNewEntry: function (thingId) {
+    var thing = this.things.get(thingId);
+
+    if (thing) {
+      this.showDetail(new NewEntryView({model: thing}));
+    } else {
+      router.redirectTo('things');
+    }
   }
 
 };

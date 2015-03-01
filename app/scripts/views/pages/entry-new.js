@@ -1,7 +1,7 @@
 'use strict';
 
 var View = require('ampersand-view');
-var template = require('templates/pages/thing-record.html');
+var template = require('templates/pages/entry-new.html');
 var Entry = require('../../models/entry');
 var router = require('router');
 
@@ -67,8 +67,8 @@ module.exports = View.extend({
       this.entry.notes = notes;
     }
 
-    this.model.entry.add(this.entry);
+    this.model.entries.add(this.entry);
 
-    router.navigate('things/all/record', {trigger: true});
+    router.navigate('things', {trigger: true});
   }
 });

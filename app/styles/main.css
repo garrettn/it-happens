@@ -36,6 +36,14 @@ form {
   margin: 1rem 1.5rem;
 }
 
-form p:first-child {
+form p {
   margin-bottom: 1rem;
+}
+
+.entry-thing-description {
+  font-style: italic;
+}
+
+.entry-when {
+  font-weight: 700;
 }
