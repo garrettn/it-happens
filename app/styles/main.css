@@ -32,6 +32,10 @@ body {
   transform: translateX(-100%);
 }
 
+.screen.active {
+  transform: translateX(0);
+}
+
 form {
   margin: 1rem 1.5rem;
 }

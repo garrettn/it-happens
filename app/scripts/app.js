@@ -35,13 +35,13 @@ var app = {
 
   showDetail: function (view) {
     this.detailSwitcher.set(view);
-    this.thingsContainer.classList.add('left');
-    this.detailContainer.classList.remove('right');
+    this.thingsContainer.classList.remove('active');
+    this.detailContainer.classList.add('active');
   },
 
   showThings: function () {
-    this.detailContainer.classList.add('right');
-    this.thingsContainer.classList.remove('left');
+    this.detailContainer.classList.remove('active');
+    this.thingsContainer.classList.add('active');
   },
 
   showNewThing: function () {
