@@ -85,6 +85,7 @@ module.exports = View.extend({
 
   events: {
     'click': 'showEntries',
+    'click [data-hook~=edit]': 'editThing',
     'click [data-hook~=delete]': 'deleteThing'
   },
 
@@ -93,6 +94,10 @@ module.exports = View.extend({
     if (!matches(e.target, '[data-hook~=new-entry]')) {
       router.navigate(this.baseUrl, {trigger: true});
     }
+  },
+
+  editThing: function () {
+    router.navigate('things/' + this.model.getId() + '/edit', {trigger: true});
   },
 
   deleteThing: function () {

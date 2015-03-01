@@ -8,6 +8,7 @@ module.exports = new (Router.extend({
     '': 'home',
     'things': 'showThings',
     'things/new': 'newThing',
+    'things/:id/edit': 'editThing',
     'things/:id': 'showEntries',
     'things/:id/entry': 'newEntry'
   },

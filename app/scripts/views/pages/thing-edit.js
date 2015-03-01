@@ -47,7 +47,7 @@ module.exports = View.extend({
 
     if (name.length) {
       this.model.set({name: name, description: description});
-      router.navigate('things/all/record', {trigger: true});
+      router.navigate('things', {trigger: true});
     }
   }
 });
