@@ -32,6 +32,12 @@ module.exports = View.extend({
       fn: function () {
         return this.baseUrl + '/entry';
       }
+    },
+    menuId: {
+      deps: ['model.cid'],
+      fn: function () {
+        return 'menu-' + this.model.cid;
+      }
     }
   },
 
@@ -62,11 +68,24 @@ module.exports = View.extend({
       type: 'attribute',
       name: 'href',
       hook: 'new-entry'
-    }
+    },
+    'menuId': [
+      {
+        type: 'attribute',
+        hook: 'thing',
+        name: 'contextmenu'
+      },
+      {
+        type: 'attribute',
+        hook: 'menu',
+        name: 'id'
+      },
+    ]
   },
 
   events: {
-    'click': 'showEntries'
+    'click': 'showEntries',
+    'click [data-hook~=delete]': 'deleteThing'
   },
 
   showEntries: function (e) {
@@ -74,5 +93,12 @@ module.exports = View.extend({
     if (!matches(e.target, '[data-hook~=new-entry]')) {
       router.navigate(this.baseUrl, {trigger: true});
     }
+  },
+
+  deleteThing: function () {
+    if (window.confirm('Are you sure you want to delete "' + this.model.name + '"? You will lose any data associated with it.')) {
+      this.model.collection.remove(this.model);
+    }
+    router.navigate('things', {trigger: true});
   }
 });

@@ -1,4 +1,4 @@
-<li class="active">
+<li class="active" data-hook="thing">
   <div class="fit six">
     <p data-hook="name"></p>
     <p><span data-hook="entries-number"></span> <span data-hook="entries-inflection"></span></p>
@@ -7,4 +7,9 @@
   <div class="fit">
     <a class="gaia-icon icon-newadd" data-hook="new-entry">add</a>
   </div>
+
+  <menu type="context" data-hook="menu">
+    <menuitem label="Edit" data-hook="edit"></menuitem>
+    <menuitem label="Delete" data-hook="delete"></menuitem>
+  </menu>
 </li>
