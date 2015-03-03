@@ -303,9 +303,13 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           dot: true,
-          cwd: 'bower_components/ratchet/dist',
-          src: 'fonts/*',
-          dest: '<%= config.dist %>'
+          cwd: 'bower_components/building-blocks/style',
+          src: [
+            'headers/images/icons/add.png',
+            'headers/images/icons/back.png',
+            'headers/images/icons/close.png'
+          ],
+          dest: '<%= config.dist %>/styles/'
         }]
       },
       styles: {
