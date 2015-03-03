@@ -14,6 +14,12 @@ module.exports = View.extend({
       fn: function () {
         return this.model.timesHappened === 1 ? 'time' : 'times';
       }
+    },
+    newEntryUrl: {
+      deps: ['model.id'],
+      fn: function () {
+        return '#things/' + this.model.getId() + '/entry';
+      }
     }
   },
 
@@ -53,7 +59,12 @@ module.exports = View.extend({
         type: 'text',
         hook: 'description'
       }
-    ]
+    ],
+    'newEntryUrl': {
+      type: 'attribute',
+      name: 'href',
+      hook: 'new-entry'
+    }
   }
 
 });
