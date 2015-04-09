@@ -1,5 +1,8 @@
 {
   "name": "stuff-happens",
+  "scripts": {
+    "build": "rimraf dist && webpack --colors"
+  },
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
     "grunt": "^0.4.5",
@@ -24,6 +27,7 @@
     "grunt-wiredep": "^1.7.0",
     "jshint-stylish": "^0.4.0",
     "load-grunt-tasks": "^0.4.0",
+    "rimraf": "^2.3.2",
     "time-grunt": "^0.4.0",
     "webpack": "^1.4.15",
     "webpack-dev-server": "^1.7.0"
