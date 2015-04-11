@@ -5,6 +5,9 @@
 // global variable localforage, which is created by this script.
 require('script!localforage/dist/localforage.nopromises.js');
 
+// Import the main stylesheet
+require('styles/main.css');
+
 var app = require('./app');
 
 document.addEventListener('DOMContentLoaded', function () {
