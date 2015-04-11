@@ -31,6 +31,7 @@
     "html-webpack-plugin": "ampedandwired/html-webpack-plugin#52ff70c9191dd98b6b0d6992e37c0c52b3e00c55",
     "jshint-stylish": "^0.4.0",
     "load-grunt-tasks": "^0.4.0",
+    "localforage": "^1.2.2",
     "rimraf": "^2.3.2",
     "script-loader": "^0.6.1",
     "style-loader": "^0.10.1",
