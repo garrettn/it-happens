@@ -2,7 +2,6 @@
   "name": "stuff-happens",
   "private": true,
   "dependencies": {
-    "localforage": "~1.2.1",
     "building-blocks": "gh-pages"
   }
 }
