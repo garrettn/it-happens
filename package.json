@@ -28,6 +28,7 @@
     "grunt-usemin": "^2.3.0",
     "grunt-webpack": "^1.0.8",
     "grunt-wiredep": "^1.7.0",
+    "html-webpack-plugin": "ampedandwired/html-webpack-plugin#52ff70c9191dd98b6b0d6992e37c0c52b3e00c55",
     "jshint-stylish": "^0.4.0",
     "load-grunt-tasks": "^0.4.0",
     "rimraf": "^2.3.2",

@@ -1,6 +1,7 @@
 'use strict';
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: 'main',
@@ -34,6 +35,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('main.[hash].css')
+    new ExtractTextPlugin('main.[hash].css'),
+    new HtmlPlugin({
+      title: 'These Things Happen'
+    })
   ]
 };
