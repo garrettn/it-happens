@@ -22,6 +22,13 @@ module.exports = {
     'localforage': 'localforage'
   },
   module: {
+    preLoaders: [
+        {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'jshint-loader'
+        }
+    ],
     loaders: [
       { test: /\.html$/, loader: 'html' },
       { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") },
@@ -40,5 +47,8 @@ module.exports = {
       title: 'These Things Happen',
       template: 'app/index.html'
     })
-  ]
+  ],
+  jshint: {
+    failOnHint: true
+  }
 };
