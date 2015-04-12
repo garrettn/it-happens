@@ -32,5 +32,8 @@
     "backbone-events-standalone": "^0.2.4",
     "matches-selector": "^1.0.0",
     "uuid": "^2.0.1"
+  },
+  "webide": {
+    "packageDir": "dist"
   }
 }
