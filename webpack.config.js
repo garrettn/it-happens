@@ -37,7 +37,8 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('main.[hash].css'),
     new HtmlPlugin({
-      title: 'These Things Happen'
+      title: 'These Things Happen',
+      template: 'app/index.html'
     })
   ]
 };

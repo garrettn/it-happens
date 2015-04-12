@@ -1,53 +1,18 @@
 <!doctype html>
-<html class="no-js">
+<html{% if(o.htmlWebpackPlugin.files.manifest) { %} manifest="{%= o.htmlWebpackPlugin.files.manifest + o.htmlWebpackPlugin.querystring %}"{% } %}>
   <head>
     <meta charset="utf-8">
-    <title>These Things Happen</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/building-blocks/fonts.css">
-    <link rel="stylesheet" href="bower_components/building-blocks/util.css">
-    <link rel="stylesheet" href="bower_components/building-blocks/style/icons.css">
-    <link rel="stylesheet" href="bower_components/building-blocks/style/layout.css">
-    <link rel="stylesheet" href="bower_components/building-blocks/style/headers.css">
-    <link rel="stylesheet" href="bower_components/building-blocks/style/tabs.css">
-    <link rel="stylesheet" href="bower_components/building-blocks/style/lists.css">
-    <link rel="stylesheet" href="bower_components/building-blocks/style/input_areas.css">
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+    <title>{%=o.htmlWebpackPlugin.options.title || 'Webpack App'%}</title>
+    {% for (var css in o.htmlWebpackPlugin.files.css) { %}
+    <link href="{%=o.htmlWebpackPlugin.files.css[css] + o.htmlWebpackPlugin.querystring %}" rel="stylesheet">
+    {% } %}
   </head>
   <body>
     <div class="screen left active" data-hook="view-things"></div>
     <div class="screen right" data-hook="container-detail"></div>
-
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/localforage/dist/localforage.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-
-        <!-- build:js(.) scripts/plugins.js -->
-        <!-- endbuild -->
-
-        <!-- build:js({app,.tmp}) scripts/app.bundle.js -->
-        <script src="scripts/app.bundle.js"></script>
-        <!-- endbuild -->
-</body>
+    {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+    <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry + o.htmlWebpackPlugin.querystring %}"></script>
+    {% } %}
+  </body>
 </html>
