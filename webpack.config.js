@@ -6,6 +6,17 @@ var HtmlPlugin = require('html-webpack-plugin');
 
 var isDev = process.env.BUILD_ENV !== 'production';
 
+// Plugins to be used only for development build
+var devPlugins = isDev
+  ? [
+    // Need to specify source maps for CSS until this fix is released:
+    // https://github.com/webpack/webpack/pull/975
+    new webpack.SourceMapDevToolPlugin({
+      test: /\.css$/
+    })
+  ]
+  : [];
+
 // Plugins to be used only for production build
 var prodPlugins = isDev
   ? []
@@ -47,7 +58,13 @@ var config = {
     ],
     loaders: [
       { test: /\.html$/, loader: 'html' },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract(
+          'style-loader',
+          'css-loader' + (isDev ? '?sourceMap' : '')
+        )
+      },
 
       // Extracting all images and fonts as files because the Building Blocks
       // stylesheets include a lot of assets that we won't use, so we don't want
@@ -64,7 +81,7 @@ var config = {
       title: 'These Things Happen',
       template: 'app/index.html'
     })
-  ].concat(prodPlugins),
+  ].concat(devPlugins, prodPlugins),
 
   devtool: isDev ? 'source-map' : false,
 
