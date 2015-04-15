@@ -1,14 +1,28 @@
 'use strict';
 
+var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlPlugin = require('html-webpack-plugin');
 
-module.exports = {
+var isDev = process.env.BUILD_ENV !== 'production';
+
+// Plugins to be used only for production build
+var prodPlugins = isDev
+  ? []
+  : [
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin()
+  ];
+
+var config = {
   entry: 'main',
+
   output: {
     path: __dirname + '/dist',
     filename: 'app.[hash].js'
   },
+
   resolve: {
     modulesDirectories: ['web_modules', 'node_modules', 'bower_components'],
     root: __dirname + '/app/scripts',
@@ -18,9 +32,11 @@ module.exports = {
       styles: __dirname + '/app/styles'
     }
   },
+
   externals: {
     'localforage': 'localforage'
   },
+
   module: {
     preLoaders: [
         {
@@ -41,14 +57,20 @@ module.exports = {
       { test: /\.(eot|woff|ttf)$/, loader: 'file' }
     ]
   },
+
   plugins: [
     new ExtractTextPlugin('main.[hash].css'),
     new HtmlPlugin({
       title: 'These Things Happen',
       template: 'app/index.html'
     })
-  ],
+  ].concat(prodPlugins),
+
+  devtool: isDev ? 'source-map' : false,
+
   jshint: {
     failOnHint: true
   }
 };
+
+module.exports = config;

@@ -1,7 +1,9 @@
 {
   "name": "stuff-happens",
   "scripts": {
-    "build": "rimraf dist && webpack --colors"
+    "build": "rimraf dist && BUILD_ENV=production webpack --progress --colors",
+    "build-dev": "rimraf dist && webpack --progress --colors",
+    "start": "rimraf dist && webpack --progress --colors --watch"
   },
   "devDependencies": {
     "css-loader": "^0.10.1",
