@@ -3,7 +3,7 @@
 var State = require('ampersand-state');
 var uuid = require('uuid');
 var Entries = require('./entry-collection');
-var last = require('amp-last');
+var last = require('lodash/array/last');
 
 module.exports = State.extend({
   props: {

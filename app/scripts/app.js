@@ -32,7 +32,7 @@ var app = {
     router.on('route:showEntries', this.showEntries, this);
     router.on('route:newEntry', this.showNewEntry, this);
 
-    router.history.start();
+    router.history.start({pushState: false});
   },
 
   showDetail: function (view) {

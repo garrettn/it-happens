@@ -1,5 +1,5 @@
 'use strict';
 
-var BackboneEvents = require('backbone-events-standalone');
+var Events = require('ampersand-events');
 
-module.exports = BackboneEvents.mixin({});
+module.exports = Events.createEmitter();
