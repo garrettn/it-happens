@@ -15,7 +15,7 @@ module.exports = Collection.extend({
     this.listenTo(this, 'change:mostRecentlyHappened', this.sort);
 
     localforage.config({
-       name: 'these-things-happen',
+       name: 'it-happens',
        storeName: 'things'
     });
   },
