@@ -3,9 +3,11 @@
   "scripts": {
     "build": "rimraf dist && BUILD_ENV=production webpack --progress --colors",
     "build-dev": "rimraf dist && webpack --progress --colors",
+    "pack": "npm run build && node zip.js",
     "start": "rimraf dist && webpack --progress --colors --watch"
   },
   "devDependencies": {
+    "archiver": "^0.14.3",
     "css-loader": "^0.10.1",
     "extract-text-webpack-plugin": "^0.5.0",
     "file-loader": "^0.8.1",
