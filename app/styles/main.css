@@ -20,6 +20,10 @@ section[role="region"] > header:first-child {
   color: #F030B8;
 }
 
+.gaia-list article > p {
+  margin: 1em 1.5em;
+}
+
 .gaia-icon {
   font-size: 0;
   color: #000;

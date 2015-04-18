@@ -7,6 +7,19 @@ var ThingView = require('../items/thing.js');
 
 module.exports = View.extend({
   template: template,
+
+  props: {
+    hasThings: 'boolean'
+  },
+
+  initialize: function () {
+    this.listenToAndRun(this.collection, 'add remove reset', this.updateHasThings);
+  },
+
+  updateHasThings: function () {
+    this.hasThings = this.collection.length > 0;
+  },
+
   subviews: {
     things: {
       hook: 'things',
@@ -18,6 +31,14 @@ module.exports = View.extend({
           reverse: true
         });
       }
+    }
+  },
+
+  bindings: {
+    'hasThings' : {
+      type: 'toggle',
+      yes: '[data-hook~=has-things]',
+      no: '[data-hook~=no-things]'
     }
   }
 
