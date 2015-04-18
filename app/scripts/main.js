@@ -5,10 +5,10 @@ require('!file?name=[name].[ext]!../manifest.webapp');
 require('!file?name=[name].[ext]!../images/icon128.png');
 require('!file?name=[name].[ext]!../images/icon512.png');
 
-// Execute the dist version of localforage in the global context because it's
-// not compatible with Webpack yet. The module 'localforage' is aliased to the
+// Load the dist version of localforage as a separate file because it's not
+// compatible with Webpack yet. The module 'localforage' is aliased to the
 // global variable localforage, which is created by this script.
-require('script!localforage/dist/localforage.nopromises.js');
+require('file?name=localforage.js!localforage/dist/localforage.nopromises.min.js');
 
 // Import the main stylesheet
 require('styles/main.css');
