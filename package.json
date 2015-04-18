@@ -1,5 +1,5 @@
 {
-  "name": "stuff-happens",
+  "name": "it-happens",
   "scripts": {
     "build": "rimraf dist && BUILD_ENV=production webpack --progress --colors",
     "build-dev": "rimraf dist && webpack --progress --colors",
