@@ -1,6 +1,7 @@
 {
   "name": "It Happens",
   "description": "Easily track when things happen in your life.",
+  "version": "1.0.1",
   "launch_path": "/index.html",
   "icons": {
     "512": "/icon512.png",

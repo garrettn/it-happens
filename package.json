@@ -1,5 +1,6 @@
 {
   "name": "it-happens",
+  "version": "1.0.1",
   "scripts": {
     "build": "rimraf dist && BUILD_ENV=production webpack --progress --colors",
     "build-dev": "rimraf dist && webpack --progress --colors",

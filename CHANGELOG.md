@@ -1,3 +1,9 @@
+### 1.0.1 (2015-04-20)
+
+#### Fixes
+
+- List version number in `package.json` and `manifest.webapp`.
+
 # 1.0.0 (2015-04-18)
 
 #### Features
