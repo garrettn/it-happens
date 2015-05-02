@@ -78,7 +78,7 @@ var config = {
   plugins: [
     new ExtractTextPlugin('main.[hash].css'),
     new HtmlPlugin({
-      title: 'These Things Happen',
+      inject: true,
       template: 'app/index.html'
     })
   ].concat(devPlugins, prodPlugins),
